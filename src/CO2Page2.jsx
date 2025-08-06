@@ -50,7 +50,7 @@ function CO2Page2() {
               <p>
                 Naturgas och olja används ofta för att värma upp bostäder och byggnader. I många delar av världen, särskilt i kallare klimat, är det fortfarande vanligt att använda olja eller gas för att värma hemmet under vintermånaderna. Detta är särskilt viktigt för äldre människor, som ofta tillbringar mer tid hemma och är mer beroende av att hålla sina bostäder varma och bekväma.
               </p>
-              <img src="house.jpg" alt="Bostadshus vid kusten" className="content-image" /> 
+              <img src="House.jpg" alt="Bostadshus vid kusten" className="content-image" /> 
               <p>Bildtext: Bostadshus som är vid kusten.</p>
 
               <h2>Industriell produktionen</h2>
