@@ -402,11 +402,18 @@ button:hover {
 }
 
 .signout {
-  position: absolute;
-  top: 15px;  /* Sätter avstånd från toppen */
-  left: 15px; /* Marginal från vänsterkant */
-  z-index: 1000; /* Lägger knappen högre än andra element för att säkerställa dess synlighet */
-  padding: 30px;
+  .signin {
+    width: auto;             /* Tar bort fast bredd om du vill att den ska anpassa sig */
+    padding: 6px 12px;       /* Minskar padding för mindre knapp */
+    font-size: 14px;         /* Passande storlek i headern */
+    line-height: 1.5;
+    display: inline-flex;    /* Gör så att innehållet i knappen centreras fint */
+    align-items: center;
+    gap: 8px;                /* Mellanrum mellan text och ikon */
+    max-height: 36px;        /* Max höjd för knappen */
+    white-space: nowrap;     /* Hindrar texten från att brytas på flera rader */
+  }
+  
 }
 
 .startbuttons {
