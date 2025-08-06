@@ -483,4 +483,9 @@ button:focus {
 
 /* QUIZ CSS SLUTAR */
 
-/* Navigationskn
+/* Navigationskn*/
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
