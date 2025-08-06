@@ -1,9 +1,18 @@
-/*Sätter en generell styling på hela appen*/
+/* Variabler för färger */
+:root {
+  --main-text-color: black;
+  --main-accent-color: #146F41;
+  --footer-bg-color: #D9D9D9;
+  --button-bg-color: #FC985C;
+  --button-hover-bg: #FFCB71;
+}
+
+/* Sätter en generell styling på hela appen */
 .App {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
-  color:#000;
-  font-size: 14px;
+  color: var(--main-text-color);
+  font-size: 0.875rem; /* ca 14px */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20,27 +29,40 @@
     transform: rotate(360deg);
   }
 }
-/*Gör alla länkar svarta*/
-.navlinks, link, footer a, .box, .sidebar, .sidebar-list li a, h1, h2, h3, h4{
-  color: black;
+
+/* Gör alla länkar svarta */
+.navlinks,
+link,
+footer a,
+.box,
+.sidebar,
+.sidebar-list li a,
+h1,
+h2,
+h3,
+h4 {
+  color: var(--main-text-color);
 }
 
-h1{
-  font-size: 36px;
+/* Rubriker */
+h1 {
+  font-size: 2.25rem; /* 36px */
   font-weight: bold;
   text-align: center;
 }
 
-h2{
-  font-size: 20px;
+h2 {
+  font-size: 1.25rem; /* 20px */
   font-weight: bold;
 }
 
-h3, h4{
-  font-size: 14px;
+h3,
+h4 {
+  font-size: 0.875rem;
   font-weight: bold;
 }
 
+/* App-logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -49,16 +71,14 @@ h3, h4{
 /* Root-div för att hantera hela layouten */
 #root {
   display: flex;
-/*Trots att vi inte kodat specifikt för en responsiv webbplats har vi valt att använda flex*/  flex-direction: column;
-  min-height: 100vh;
-
-  /*Täcker hela skärmhöjden */
+  flex-direction: column;
+  min-height: 100vh; /* Täcker hela skärmhöjden */
 }
 
-/*FOOTER BÖRJAR*/
+/* FOOTER BÖRJAR */
 footer {
   width: 100%;
-  background-color: #D9D9D9; /* Ljusgrå bakgrundsfärg */
+  background-color: var(--footer-bg-color);
   padding: 10px 20px;
   align-items: center;
   margin-top: auto;
@@ -69,16 +89,19 @@ footer {
 footer .footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Låter kolumnerna börja från toppen */
+  align-items: flex-start;
   width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .adress {
-  min-width: 200px; /* Sätt en minsta bredd för bättre responsivitet */
+  min-width: 200px;
 }
 
-.adress h3, .adress h4 {
-  margin: 0; /*tar bort marginalen på rubriken*/
+.adress h3,
+.adress h4 {
+  margin: 0;
 }
 
 .navlinks {
@@ -87,94 +110,126 @@ footer .footer {
 }
 
 .navlinks ul {
-  list-style: none; /* Ta bort punktlistan */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navlinks li {
-  margin: 5px 0; /* Mellanrum mellan länkarna */
+  margin: 5px 0;
 }
 
 .navlinks a {
-  text-decoration: none; /* Ta bort understrykning */
-  font-size: 20px;
+  text-decoration: none;
+  font-size: 1.25rem; /* 20px */
+  color: var(--main-text-color);
+  transition: color 0.3s ease;
 }
 
-.navlinks a:hover {
-  color: #146f41; /* Grön färg på hover */
+.navlinks a:hover,
+.navlinks a:focus {
+  color: var(--main-accent-color);
+  outline: none;
+  text-decoration: underline;
+  box-shadow: 0 0 0 3px rgba(20, 111, 65, 0.5);
 }
 
 .logo {
-  justify-content: flex-end; /* Placera logotypen till höger */
+  justify-content: flex-end;
   align-items: center;
   width: 200px;
 }
 
 .logo img {
-  width: auto; 
+  width: auto;
   height: 120px;
 }
 
-.adress-container, footer .footer {
-  gap: 20px; /* Mellanrum mellan kolumnerna */
+.adress-container,
+footer .footer {
+  gap: 20px;
 }
 
-.adress-container, .logo, footer .footer {
+.adress-container,
+.logo,
+footer .footer {
   display: flex;
 }
 
-.address-column, .contact-column, .logo, .navlinks, .adress {
-  flex: 1; /* Låt varje kolumn ta lika mycket utrymme */
+.address-column,
+.contact-column,
+.logo,
+.navlinks,
+.adress {
+  flex: 1;
 }
-/*FOOTER SLUT*/
 
-/*STARTSIDA BÖRJAR*/
+/* Responsiv footer */
+@media (max-width: 768px) {
+  footer .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .adress,
+  .navlinks,
+  .logo {
+    min-width: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .logo img {
+    height: 80px;
+  }
+}
+
+/* STARTSIDA BÖRJAR */
 .homepage {
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  max-width: fit-content;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-.homepage-buttons {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
 .textcontent {
-  margin-top: 40px;
-  width: 50%;
-  float: left;
-  text-align: left;  
+  flex: 1 1 400px;
   padding: 20px;
-  border-left: solid black 4px; /*lägger en svart kant mot bilden*/
+  border-left: 4px solid black;
+  text-align: left;
+  margin-top: 40px;
 }
- .startimage {
-  width: 45%;
-  float: left;
+
+.startimage {
+  flex: 1 1 350px;
   margin: 40px 10px 40px 30px;
 }
-.startimage img {
-  max-width: 60%;
-  height: auto;
-}
-/*STARTSIDA SLUTAR*/
 
-/*WORKSHOPCARDS BÖRJAR*/
-.workshop-wrapper {
-  padding: 0; /* Ingen padding i föräldern */
-  margin: 0; /* Ingen marginal i föräldern */
+.startimage img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
 }
+/* STARTSIDA SLUTAR */
+
+/* WORKSHOPCARDS BÖRJAR */
+.workshop-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
 .workshop-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Fördelar utrymme mellan boxarna */
-  align-items: flex-start; /* Justerar boxarna högst upp */
-  gap: 0; /* Ingen mellanrum mellan boxarna */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0;
 }
+
 .box {
-  width: 220px; 
+  width: 220px;
   height: 318px;
-  margin: 20px 10px 10px 10px; 
+  margin: 20px 10px 10px 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -182,66 +237,85 @@ footer .footer {
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  transition: color 0.3s ease; /* Lägger till en smidig övergång */  
+  transition: box-shadow 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 .box img {
   width: 180px;
   height: 200px;
   object-fit: cover;
 }
-.workshop-container .box:hover{
-  color: #146F41;
-  font-size: 26px;
+
+.workshop-container .box:hover {
+  color: var(--main-accent-color);
+  font-size: 1.625rem; /* 26px */
+  box-shadow: 0 6px 12px rgba(20, 111, 65, 0.4);
 }
+
 #tidigare-workshop {
-  margin: 0; /* Ingen extra marginal */
-  align-self: flex-start; /* Säkerställer att bilden följer samma linje som andra objekt */
+  margin: 0;
+  align-self: flex-start;
   border: solid black 2px;
   width: 250px;
-  margin: -40px 0px 0px 0px;
-}
-#workshoprubrik{
-  margin-top: 2rem; /*lägger in marginal från toppen*/
+  margin: -40px 0 0 0;
 }
 
-/*färgsätter boxarna med olika färger*/
-#co2page{
+#workshoprubrik {
+  margin-top: 2rem;
+}
+
+/* färgsätter boxarna med olika färger */
+#co2page {
   background-color: #BCB8B8;
 }
-#globaltemperaturepage{
+
+#globaltemperaturepage {
   background-color: #FFD640;
 }
-#glacierpage{
+
+#glacierpage {
   background-color: #D9F4FF;
 }
-#vatten{
+
+#vatten {
   background-color: #B2CDFF;
 }
-/*WORKSHOPCARDS SLUTAR*/
+/* WORKSHOPCARDS SLUTAR */
 
-/*WORSKSHOPS SIDOR, gemmensam kod BÖRJAR*/
+/* WORKSHOPS SIDOR, gemensam kod BÖRJAR */
 .content-wrapper {
-  display: flex; /* Aktiverar Flexbox för att placera texten och bilderna horisontellt */
-  align-items: flex-start; /* Justera vertikalt så att texten är uppe till vänster */
-  gap: 40px; /* Lägg till avstånd mellan text och bild */
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
   margin: 20px 0;
+  flex-wrap: wrap;
 }
+
 .main-content {
   padding-bottom: 80px;
+  flex: 1 1 600px;
 }
+
 .header {
   margin-bottom: 20px;
   padding: 30px;
 }
+
 .page .main-content {
   display: flex;
   margin: 0;
   margin-right: 30px;
+  flex-wrap: wrap;
 }
+
 .page .content-section {
   padding: 20px;
   background-color: white;
+  flex: 1 1 750px;
 }
+
 .page .content-section article {
   padding: 15px;
   border-radius: 1px;
@@ -249,48 +323,59 @@ footer .footer {
   max-width: 750px;
   margin: 0 30px 0 40px;
 }
+
 .page .quiz-section {
   padding: 20px;
   border-top: 2px solid #ccc;
   margin-top: 40px;
 }
+
 .page .quiz-section h3 {
   margin-bottom: 20px;
 }
+
 .page .navigation-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
+
 .page .nav-button {
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
-  background-color: green;
+  background-color: var(--main-accent-color);
   color: white;
   border: none;
   border-radius: 5px;
 }
-/*Gemmensammt för container*/
-.container-co2-page, .container-Glacier-page, .container-sealevel-page {
-  padding: 20px; /* Inre marginal för att skapa utrymme runt innehållet */
-  border-radius: 1px;  /* Lätt rundade hörn */
-  min-height: 100vh;  /* Säkerställer att containern tar upp minst hela viewportens höjd */
-  box-sizing: border-box;  /* Inkludera padding i elementets totala bredd och höjd */
+
+/* Gemensam container */
+.container-co2-page,
+.container-Glacier-page,
+.container-sealevel-page {
+  padding: 20px;
+  border-radius: 1px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
-/* CO2- container*/
+
+/* CO2-container */
 .container-co2-page {
   background: linear-gradient(to bottom, #BCB8B8, #5D5656);
 }
-/*Glaciär- container*/
+
+/* Glaciär-container */
 .container-Glacier-page {
   background: linear-gradient(to bottom, #D9f4ff, #09abeb);
 }
-/*Sea level page*/
+
+/* Sea level page */
 .container-sealevel-page {
-  background: linear-gradient(to bottom, #B2CDFF, #103DB9);/* Ljusblå till mörkblå gradient */
+  background: linear-gradient(to bottom, #B2CDFF, #103DB9);
 }
-/* Sidebar som är på workshop sidorna*/
+
+/* Sidebar som är på workshop sidorna */
 .sidebar {
   width: 20%;
   margin-right: 20px;
@@ -312,39 +397,44 @@ footer .footer {
 
 .sidebar-list li a {
   text-decoration: none;
-  transition: text-decoration 0.3s ease; /* Lägger till en smidig övergång för understrykning */
+  transition: text-decoration 0.3s ease, color 0.3s ease;
+  color: var(--main-text-color);
 }
 
-.sidebar-list li a:hover {
-  color: #146F41; /* Ändrar textfärgen vid hovring */
-  text-decoration: underline; /* Understryker länken vid hovring */  
+.sidebar-list li a:hover,
+.sidebar-list li a:focus {
+  color: var(--main-accent-color);
+  text-decoration: underline;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(20, 111, 65, 0.5);
 }
 
-/*STIL FÖR BILDER WORKSHOP*/
-.content-image {/*över hela sidan*/
+/* STIL FÖR BILDER WORKSHOP */
+.content-image {
   display: block;
   width: 100%;
   max-width: 750px;
   margin: 20px auto;
   height: 350px;
 }
-.rightside-image {/* Höger */
+
+.rightside-image {
   min-width: 300px;
   min-height: 300px;
-  width: 100%; /* Bilden tar hela bredden av sin förälder */
+  width: 100%;
   height: 100%;
 }
 
-
 /* Ny container för bilderna som gör att bilderna placeras vertikalt */
 .image-container {
-  display: flex; /* Flexbox för bilder */
-  flex-direction: column; /* Ställer bilderna i en kolumn (vertikalt) */
-  gap: 30px; /* Avstånd mellan bilderna */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
-/*WORSKSHOPS SIDOR, gemmensam kod SLUT*/
 
-/* QUIZ CSS BÖRJAR*/
+/* WORKSHOPS SIDOR, gemensam kod SLUT */
+
+/* QUIZ CSS BÖRJAR */
 .question {
   margin-bottom: 30px;
 }
@@ -357,21 +447,25 @@ footer .footer {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 button {
   padding: 10px 20px;
-  font-size: 24px;
-  background-color: #FC985C;
+  font-size: 1.5rem; /* 24px */
+  background-color: var(--button-bg-color);
   color: black;
   cursor: pointer;
   font-weight: bold;
-  border: 2px solid white; /* Lägg till en vit border */
+  border: 2px solid white;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #FFCB71;
+button:hover,
+button:focus {
+  background-color: var(--button-hover-bg);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(252, 152, 92, 0.7);
 }
 
 .correct {
@@ -384,43 +478,9 @@ button:hover {
 
 .result {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 1.125rem; /* 18px */
 }
 
-/* QUIZ CSS SLUTAR*/
+/* QUIZ CSS SLUTAR */
 
-/*Navigationsknappar*/
-.forward {
-  padding: 5px 10px;
-  height: 40px;
-  line-height: 1.5; /* Justerar textens höjd */
-  font-size: 14px;
-  background-color: #146F41;
-}
-.signin, .signout {
-  width: 150px; /* Bredd för knapparna */
-}
-
-.signout {
-  .signin {
-    width: auto;             /* Tar bort fast bredd om du vill att den ska anpassa sig */
-    padding: 6px 12px;       /* Minskar padding för mindre knapp */
-    font-size: 14px;         /* Passande storlek i headern */
-    line-height: 1.5;
-    display: inline-flex;    /* Gör så att innehållet i knappen centreras fint */
-    align-items: center;
-    gap: 8px;                /* Mellanrum mellan text och ikon */
-    max-height: 36px;        /* Max höjd för knappen */
-    white-space: nowrap;     /* Hindrar texten från att brytas på flera rader */
-  }
-  
-}
-
-.startbuttons {
-  display: flex; /* Flexbox för att placera knapparna bredvid varandra*/
-  gap: 10px; /* Mellanrum mellan knapparna */
-  justify-content: center;
-  margin-top: 20px; /*Lägger till marginal från objekten ovanför*/
-}
-
-
+/* Navigationskn
